@@ -12,6 +12,7 @@ body {
   margin: auto;
   width: 400px;
   padding-top: 0.5px;
+  margin-bottom: 200px;
 }
 
 .current-balance {
@@ -20,4 +21,13 @@ body {
   background-color: white;
   border-radius: 3px;
   font-size: 20px;
+}
+
+footer {
+  color: white;
+  text-align: center;
+}
+
+footer a {
+  color: white;
 }
