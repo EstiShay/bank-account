@@ -33,8 +33,12 @@ $(document).ready(function() {
     $("#withdrawal-balance").submit(function(event) {
       event.preventDefault();
       var newWithdrawal = parseInt($("#withdraw-amount").val());
-      newBankAccount.withdrawal(newWithdrawal);
-      $(".current-balance").text("$" + newBankAccount.balance);
+      if (newWithdrawal > newBankAccount.balance) {
+        alert("Your withdrawal request is greater than your balance.")
+      } else {
+        newBankAccount.withdrawal(newWithdrawal);
+        $(".current-balance").text("$" + newBankAccount.balance);
+      }
     });
   });
 });
