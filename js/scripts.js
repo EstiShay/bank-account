@@ -4,10 +4,12 @@ function BankAccount (userName, balance) {
   this.balance = balance;
 }
 
-BankAccount.prototype.deposit = function() {
+BankAccount.prototype.deposit = function(newDepositAmount) {
+  this.balance += newDepositAmount;
 }
 
-BankAccount.prototype.withdrawal = function() {
+BankAccount.prototype.withdrawal = function(newWithdrawal) {
+  this.balance -= newWithdrawal;
 }
 
 //UI logic
@@ -15,18 +17,24 @@ $(document).ready(function() {
   $("#register-form").submit(function(event) {
     event.preventDefault();
     var userName = $("input#account-name").val();
-    var initialDeposit = $("input#initial-deposit").val();
+    var initialDeposit = parseInt($("input#initial-deposit").val());
 
-    // $(".show-balance").append("<p>" + userName + "</p>");
-    // $(".show-balance").append("<p>" + initialDeposit + "</p>");
+    var newBankAccount = new BankAccount(userName, initialDeposit);
 
+    $(".current-balance").append("$" + newBankAccount.balance);
+
+    $("#deposit-balance").submit(function(event) {
+      event.preventDefault();
+      var newDepositAmount = parseInt($("#deposit-amount").val());
+      newBankAccount.deposit(newDepositAmount);
+      $(".current-balance").text("$" + newBankAccount.balance);
+    });
+
+    $("#withdrawal-balance").submit(function(event) {
+      event.preventDefault();
+      var newWithdrawal = parseInt($("#withdraw-amount").val());
+      newBankAccount.withdrawal(newWithdrawal);
+      $(".current-balance").text("$" + newBankAccount.balance);
+    });
   });
-
-
-  $("#change-balance").submit(function(event) {
-    event.preventDefault();
-  });
-
-
-
 });
