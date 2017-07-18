@@ -1,3 +1,23 @@
+body {
+  background-image: url(../moneygarden.jpg)
+}
+
+.well {
+  background-color: #cef4ff;
+}
+
+.show-balance {
+  text-align: center;
+  display: block;
+  margin: auto;
+  width: 400px;
+  padding-top: 0.5px;
+}
+
 .current-balance {
-  border: 5px solid black;
+  border: 2px solid black;
+  padding: 10px;
+  background-color: white;
+  border-radius: 3px;
+  font-size: 20px;
 }
